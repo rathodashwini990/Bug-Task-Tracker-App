@@ -1,23 +1,35 @@
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import TaskCard from "../../components/TaskCard";
-import tasks from "../../data/tasks.json";
+import CreateTaskForm from "../../components/CreateTaskForm";
+import tasksData from "../../data/tasks.json";
 import "../../styles/dashboard.css";
 
 export default function DeveloperDashboard() {
-  const user = typeof window !== "undefined" ? localStorage.getItem("role") : "";
-  const username = typeof window !== "undefined" ? localStorage.getItem("username") : "";
+    const [tasks, setTasks] = useState([]);
+    const username = typeof window !== "undefined" ? localStorage.getItem("username") : "";
+  
+    useEffect(() => {
+      const userTasks = tasksData.filter((task) => task.assignedTo === username);
+      setTasks(userTasks);
+    }, [username]);
+  
+    const handleAddTask = (newTask) => {
+      setTasks((prev) => [...prev, newTask]);
+    };
+    
+    return (
+        <div className="dashboard">
+            <Header role="Developer" />
+            <h2>Create New Task</h2>
+            <CreateTaskForm onAdd={handleAddTask} username={username} />
 
-  const userTasks = tasks.filter((task) => task.assignedTo === username);
-
-  return (
-    <div className="dashboard">
-      <Header role="Developer" />
-      <h2>Your Tasks</h2>
-      <div className="task-grid">
-        {userTasks.map((task) => (
-          <TaskCard key={task.id} {...task} />
-        ))}
-      </div>
-    </div>
-  );
+            <h2>Your Tasks</h2>
+            <div className="task-grid">
+            {tasks.map((task) => (
+                <TaskCard key={task.id} {...task} />
+            ))}
+            </div>
+        </div>
+    );
 }

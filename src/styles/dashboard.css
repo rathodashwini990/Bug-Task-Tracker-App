@@ -31,3 +31,29 @@
    h2 {
     margin-top: 2rem;
  }
+
+ .task-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+  .task-form input,
+  .task-form textarea,
+  .task-form select,
+  .task-form button {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .task-form button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .task-form button:hover {
+    background-color: #45a049;
+  }
+  
