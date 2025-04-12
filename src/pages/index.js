@@ -15,6 +15,7 @@ export default function LoginPage() {
 
     if (user) {
       localStorage.setItem("role", user.role);
+      localStorage.setItem("username", user.username);
       router.push(`/dashboard/${user.role}`);
     } else {
       alert("Invalid credentials");
