@@ -1,32 +1,40 @@
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import TaskCard from "../../components/TaskCard";
-import TrendChart from "../../components/TrendChart";
-import tasks from "../../data/tasks.json";
+import TaskFilter from "../../components/TaskFilter";
+import tasksData from "../../data/tasks.json";
 import "../../styles/dashboard.css";
 
 export default function ManagerDashboard() {
-  const openTasks = tasks.filter((task) => task.status === "Open");
-  const closedTasks = tasks.filter((task) => task.status === "Closed");
+  const [tasks, setTasks] = useState([]);
+  const [filters, setFilters] = useState({ priority: "", status: "" });
+
+  useEffect(() => {
+    setTasks(tasksData); // All tasks
+  }, []);
+
+  const handleStatusChange = (id, newStatus) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, status: newStatus } : task))
+    );
+  };
+
+  const filteredTasks = tasks.filter((task) => {
+    const priorityMatch = filters.priority ? task.priority === filters.priority : true;
+    const statusMatch = filters.status ? task.status === filters.status : true;
+    return priorityMatch && statusMatch;
+  });
 
   return (
     <div className="dashboard">
       <Header role="Manager" />
-      <h2>Open Tasks</h2>
+      <h2>All Tasks</h2>
+      <TaskFilter filters={filters} setFilters={setFilters} />
       <div className="task-grid">
-        {openTasks.map((task) => (
-          <TaskCard key={task.id} {...task} />
+        {filteredTasks.map((task) => (
+          <TaskCard key={task.id} task={task} role="Manager" onAction={handleStatusChange} />
         ))}
       </div>
-
-      <h2>Closed Tasks</h2>
-      <div className="task-grid">
-        {closedTasks.map((task) => (
-          <TaskCard key={task.id} {...task} />
-        ))}
-      </div>
-
-      <h2>Trend Line (Tasks per Day)</h2>
-      <TrendChart tasks={tasks} />
     </div>
   );
 }

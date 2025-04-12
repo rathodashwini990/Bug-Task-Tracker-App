@@ -56,4 +56,23 @@
   .task-form button:hover {
     background-color: #45a049;
   }
+  .task-actions {
+    margin-top: 10px;
+  }
+  
+  .task-actions button {
+    margin-right: 8px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .task-filter {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+  }
   

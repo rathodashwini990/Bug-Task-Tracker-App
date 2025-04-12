@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function CreateTaskForm({ onAdd, username }) {
+export default function CreateTaskForm({ onAdd, username, editingTask }) {
   const [form, setForm] = useState({
     title: "",
     description: "",
     priority: "Medium",
     status: "Open",
     assignedTo: username,
-    date: new Date().toISOString().split("T")[0],
-    dueDate: "",
+    startDate: "", 
+    dueDate: "", 
+    tags: "",
+    estimatedHours: "", 
+    type: "Task"
   });
+
+  useEffect(() => {
+    if (editingTask) {
+      setForm({ ...editingTask, tags: editingTask.tags.join(", ") });
+    }
+  }, [editingTask]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,19 +26,16 @@ export default function CreateTaskForm({ onAdd, username }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTask = {
+    const taskData = {
       ...form,
-      id: Date.now(),
+      id: editingTask?.id || Date.now(),
+      tags: form.tags.split(",").map(tag => tag.trim()),
     };
-    onAdd(newTask);
+    onAdd(taskData);
     setForm({
-      title: "",
-      description: "",
-      priority: "Medium",
-      status: "Open",
-      assignedTo: username,
-      date: new Date().toISOString().split("T")[0],
-      dueDate: "",
+      title: "", description: "", priority: "Medium", status: "Open",
+      assignedTo: username, startDate: "", dueDate: "", tags: "",
+      estimatedHours: "", type: "Task"
     });
   };
 
@@ -37,6 +43,10 @@ export default function CreateTaskForm({ onAdd, username }) {
     <form className="task-form" onSubmit={handleSubmit}>
       <input name="title" value={form.title} onChange={handleChange} placeholder="Title" required />
       <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" />
+      <select name="type" value={form.type} onChange={handleChange}>
+        <option value="Task">Task</option>
+        <option value="Bug">Bug</option>
+      </select>
       <select name="priority" value={form.priority} onChange={handleChange}>
         <option>Low</option>
         <option>Medium</option>
@@ -45,10 +55,14 @@ export default function CreateTaskForm({ onAdd, username }) {
       <select name="status" value={form.status} onChange={handleChange}>
         <option>Open</option>
         <option>In Progress</option>
+        <option>Pending Approval</option>
         <option>Closed</option>
+        <option>Reopened</option>
       </select>
-      <input name="dueDate" type="date" value={form.dueDate} onChange={handleChange} placeholder="Due Date" />
-      <button type="submit">Add Task</button>
+      <input name="dueDate" type="date" value={form.dueDate} onChange={handleChange} />
+      <input name="tags" value={form.tags} onChange={handleChange} placeholder="Tags (comma separated)" />
+      <input name="estimatedHours" value={form.estimatedHours} onChange={handleChange} placeholder="Estimated Hours" />
+      <button type="submit">{editingTask ? "Update Task" : "Add Task"}</button>
     </form>
   );
 }
