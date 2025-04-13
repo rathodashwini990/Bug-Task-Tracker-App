@@ -60,7 +60,6 @@ A lightweight bug and task tracking web app with the following core features:
 - **Form Validation** for required fields
 - **Confirmation Toast** after form submission
 - **State Management** using `useState` and `useEffect`
-- **Toast/Snackbar** for alerts
 
 ---
 
