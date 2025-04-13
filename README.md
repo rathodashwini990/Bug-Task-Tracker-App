@@ -1,36 +1,130 @@
+# Bug & Task Tracker Web App (Next.js)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## 🚀 Getting Started
 
-First, run the development server:
+To set up and run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # Install dependencies
+npm run dev      # Start development server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or with other package managers:
+```bash
+yarn install && yarn dev
+pnpm install && pnpm dev
+bun install && bun dev
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔐 Login Credentials
 
-To learn more about Next.js, take a look at the following resources:
+This app includes mock login functionality. Use the following credentials:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Developer
+- **Username**: `dev`
+- **Password**: `dev123`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Manager
+- **Username**: `mgr`
+- **Password**: `mgr123`
 
-## Deploy on Vercel
+These credentials are hardcoded for demo purposes and role-based access is applied.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 Project Overview
+
+A lightweight bug and task tracking web app with the following core features:
+
+### 👥 Role-Based Access
+- **Developer** can create, update, and manage their own tasks.
+- **Manager** can view all tasks, assign them, and approve/reject bug resolutions.
+
+### 📋 Key Features
+- **Authentication** (mock login for simplicity)
+- **Task & Bug Management** with:
+  - Title, Description
+  - Priority, Status, Type (Bug/Task)
+  - Tags, Estimated Hours
+  - Start & Due Dates
+  - Created/Updated Dates
+  - Time Tracking
+- **Role-based Dashboards**
+- **Mobile Responsive UI** with grid layout
+- **Form Validation** for required fields
+- **Confirmation Toast** after form submission
+- **State Management** using `useState` and `useEffect`
+- **Toast/Snackbar** for alerts
+
+---
+
+## 🧱 File Structure
+```
+app/
+│
+├── components/
+│   ├── CreateTaskForm.js  // Form to create/update tasks/bugs
+│   └── LoginForm.js       // Mock login page
+│
+├── page.js               // Home/dashboard logic
+├── styles/               // CSS modules
+└── layout.js             // Global layout
+```
+
+---
+
+## 🔧 Logic & Functionality Breakdown
+
+### 1. **Login Flow**
+- Users login using mock credentials (`dev` / `mgr`).
+- Credentials are matched against hardcoded user data.
+- On success, role is stored in session/local state and dashboard is rendered accordingly.
+
+### 2. **Task/Bug Form**
+- Uses a form with grid layout.
+- Validates required fields (`title`, `assignedTo`, `project`).
+- On submit:
+  - Adds or updates task.
+  - Displays confirmation toast.
+
+### 3. **Task Listing**
+- Tasks are filtered based on role:
+  - Developers see only their tasks.
+  - Managers see all tasks.
+- Sortable/filterable by status or priority (optional feature).
+
+### 4. **Data Storage**
+- Data is stored in local component state (can be extended to localStorage, API, or database).
+- Each task includes `createdBy`, `assignedTo`, `tags`, `estimatedHours`, etc.
+
+---
+
+## 📦 Future Improvements
+- API integration with backend (MongoDB / Firebase)
+- JWT-based authentication
+- Drag-and-drop task management (Kanban)
+- Activity logs and notifications
+
+---
+
+## 📚 Learn More
+
+To learn more about Next.js, check these resources:
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
+- [Next.js GitHub Repository](https://github.com/vercel/next.js)
+
+---
+
+## 📤 Deploy on Vercel
+
+The easiest way to deploy your Next.js app is with [Vercel](https://vercel.com).
+
+Check the [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for details.
