@@ -1,92 +1,154 @@
 .dashboard {
-    padding: 2rem;
-  }
-  
-  .header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .task-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  .task-card {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 6px;
-    width: 200px;
-    width: 250px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
- }
-  .task-card p {
-    margin: 0.5rem 0;
- }
-   h2 {
-    margin-top: 2rem;
- }
+  padding: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: auto;
+}
 
- .task-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    gap: 10px;
-    margin-bottom: 2rem;
+.header {
+  background-color: #3d5d55;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.task-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+}
+
+.task-card p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 12px;
+  margin-bottom: 2rem;
+  background-color: #fefefe;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select,
+.task-form button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.task-form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.task-form button:hover {
+  background-color: #45a049;
+}
+
+.task-actions {
+  margin-top: 10px;
+}
+
+.task-actions button {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s ease;
+}
+
+.task-actions button:hover {
+  background: #0056b3;
+}
+
+.task-filter {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #cc0000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
   }
+
+  .task-form {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .task-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
   .task-form input,
   .task-form textarea,
   .task-form select,
   .task-form button {
-    padding: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
-  .task-form button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .task-form button:hover {
-    background-color: #45a049;
-  }
-  .task-actions {
-    margin-top: 10px;
-  }
-  
   .task-actions button {
-    margin-right: 8px;
     padding: 5px 8px;
-    border-radius: 6px;
-    border: none;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
+    font-size: 0.75rem;
   }
-  
-  .task-filter {
-    margin: 20px 0;
-    display: flex;
-    gap: 10px;
-  }
-  .logout-button {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin: 10px 0 20px 0;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .logout-button:hover {
-    background-color: #cc0000;
-  }  
+}

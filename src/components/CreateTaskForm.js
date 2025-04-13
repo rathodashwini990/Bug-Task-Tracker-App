@@ -1,4 +1,6 @@
+'use client';
 import { useState, useEffect } from "react";
+import "../app/styles/createform.css";
 
 export default function CreateTaskForm({ onAdd, username, editingTask }) {
   const [form, setForm] = useState({
@@ -66,20 +68,26 @@ export default function CreateTaskForm({ onAdd, username, editingTask }) {
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <input name="title" value={form.title} onChange={handleChange} placeholder="Title" required />
-      <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" />
+      <label>Title</label>
+      <input name="title" value={form.title} onChange={handleChange} required />
 
+      <label>Description</label>
+      <textarea name="description" value={form.description} onChange={handleChange} />
+
+      <label>Type</label>
       <select name="type" value={form.type} onChange={handleChange}>
         <option value="Task">Task</option>
         <option value="Bug">Bug</option>
       </select>
 
+      <label>Priority</label>
       <select name="priority" value={form.priority} onChange={handleChange}>
         <option>Low</option>
         <option>Medium</option>
         <option>High</option>
       </select>
 
+      <label>Status</label>
       <select name="status" value={form.status} onChange={handleChange}>
         <option>Open</option>
         <option>In Progress</option>
@@ -88,18 +96,35 @@ export default function CreateTaskForm({ onAdd, username, editingTask }) {
         <option>Reopened</option>
       </select>
 
-      <input name="assignedTo" value={form.assignedTo} onChange={handleChange} placeholder="Assigned To" />
-      <input name="createdBy" value={form.createdBy} onChange={handleChange} placeholder="Created By" />
-      <input name="project" value={form.project} onChange={handleChange} placeholder="Project" />
+      <label>Assigned To</label>
+      <input name="assignedTo" value={form.assignedTo} onChange={handleChange} />
 
+      <label>Created By</label>
+      <input name="createdBy" value={form.createdBy} onChange={handleChange} />
+
+      <label>Project</label>
+      <input name="project" value={form.project} onChange={handleChange} />
+
+      <label>Created Date</label>
       <input name="createdDate" type="date" value={form.createdDate} onChange={handleChange} />
+
+      <label>Updated Date</label>
       <input name="updatedDate" type="date" value={form.updatedDate} onChange={handleChange} />
+
+      <label>Start Date</label>
       <input name="startDate" type="date" value={form.startDate} onChange={handleChange} />
+
+      <label>Due Date</label>
       <input name="dueDate" type="date" value={form.dueDate} onChange={handleChange} />
 
-      <input name="tags" value={form.tags} onChange={handleChange} placeholder="Tags (comma separated)" />
-      <input name="estimatedHours" value={form.estimatedHours} onChange={handleChange} placeholder="Estimated Hours" />
-      <input name="timeSpent" value={form.timeSpent} onChange={handleChange} placeholder="Time Spent (in seconds)" />
+      <label>Tags (comma separated)</label>
+      <input name="tags" value={form.tags} onChange={handleChange} />
+
+      <label>Estimated Hours</label>
+      <input name="estimatedHours" value={form.estimatedHours} onChange={handleChange} />
+
+      <label>Time Spent (in seconds)</label>
+      <input name="timeSpent" value={form.timeSpent} onChange={handleChange} />
 
       <button type="submit">{editingTask ? "Update Task" : "Add Task"}</button>
     </form>
