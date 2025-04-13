@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { formatTime } from "../pages/utils/timeUtils";
+import { formatTime } from "../app/utils/timeUtils";
 
 export default function TaskItem({ task, onEdit, onDelete, onUpdate }) {
   const [timerRunning, setTimerRunning] = useState(false);

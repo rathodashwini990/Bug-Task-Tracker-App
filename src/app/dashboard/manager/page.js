@@ -1,10 +1,11 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Header from "../../components/Header";
-import TaskCard from "../../components/TaskCard";
-import TaskFilter from "../../components/TaskFilter";
-import tasksData from "../../data/tasks.json";
-import { formatTime } from "../utils/timeUtils";
+import { useRouter } from "next/navigation";
+import Header from "../../../components/Header";
+import TaskCard from "../../../components/TaskCard";
+import TaskFilter from "../../../components/TaskFilter";
+import tasksData from "../../../data/tasks.json";
+import { formatTime } from "../../utils/timeUtils";
 import "../../styles/dashboard.css";
 
 export default function ManagerDashboard() {
@@ -23,17 +24,24 @@ export default function ManagerDashboard() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    const priorityMatch = filters.priority ? task.priority === filters.priority : true;
+    const priorityMatch = filters.priority
+      ? task.priority === filters.priority
+      : true;
     const statusMatch = filters.status ? task.status === filters.status : true;
     return priorityMatch && statusMatch;
   });
 
-  const totalTime = tasks.reduce((sum, task) => sum + (task.timeSpent || 0), 0);
+  const totalTime = tasks.reduce(
+    (sum, task) => sum + (task.timeSpent || 0),
+    0
+  );
 
   return (
     <div className="dashboard">
       <Header role="Manager" />
-      <button onClick={handleLogout} className="logout-button">Logout</button>
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
 
       <TaskFilter filters={filters} setFilters={setFilters} />
       <h2>All Tasks</h2>

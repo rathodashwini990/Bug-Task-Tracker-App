@@ -1,18 +1,20 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Header from "../../components/Header";
-import TaskCard from "../../components/TaskCard";
-import CreateTaskForm from "../../components/CreateTaskForm";
-import TaskFilter from "../../components/TaskFilter";
-import tasksData from "../../data/tasks.json"; // ✅ ensure correct path
-import { formatTime } from "../utils/timeUtils";
+import { useRouter } from "next/navigation";
+import Header from "../../../components/Header";
+import TaskCard from "../../../components/TaskCard";
+import CreateTaskForm from "../../../components/CreateTaskForm";
+import TaskFilter from "../../../components/TaskFilter";
+import tasksData from "../../../data/tasks.json";
+import { formatTime } from "../../utils/timeUtils";
 import "../../styles/dashboard.css";
 
 export default function DeveloperDashboard() {
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
   const [filters, setFilters] = useState({ priority: "", status: "" });
-  const username = typeof window !== "undefined" ? localStorage.getItem("username") : "";
+  const username =
+    typeof window !== "undefined" ? localStorage.getItem("username") : "";
   const router = useRouter();
 
   useEffect(() => {
@@ -29,7 +31,9 @@ export default function DeveloperDashboard() {
   const handleAddTask = (newTask) => {
     if (editingTask) {
       setTasks((prev) =>
-        prev.map((t) => (t.id === editingTask.id ? { ...newTask, id: editingTask.id } : t))
+        prev.map((t) =>
+          t.id === editingTask.id ? { ...newTask, id: editingTask.id } : t
+        )
       );
       setEditingTask(null);
     } else {
@@ -43,7 +47,9 @@ export default function DeveloperDashboard() {
 
   const handleRequestClosure = (id, newStatus) => {
     setTasks((prev) =>
-      prev.map((task) => (task.id === id ? { ...task, status: newStatus } : task))
+      prev.map((task) =>
+        task.id === id ? { ...task, status: newStatus } : task
+      )
     );
   };
 
@@ -54,20 +60,31 @@ export default function DeveloperDashboard() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    const priorityMatch = filters.priority ? task.priority === filters.priority : true;
+    const priorityMatch = filters.priority
+      ? task.priority === filters.priority
+      : true;
     const statusMatch = filters.status ? task.status === filters.status : true;
     return priorityMatch && statusMatch;
   });
 
-  const totalTime = tasks.reduce((sum, task) => sum + (task.timeSpent || 0), 0);
+  const totalTime = tasks.reduce(
+    (sum, task) => sum + (task.timeSpent || 0),
+    0
+  );
 
   return (
     <div className="dashboard">
       <Header role="Developer" />
-      <button onClick={handleLogout} className="logout-button">Logout</button>
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
 
       <h2>{editingTask ? "Edit Task" : "Create Task"}</h2>
-      <CreateTaskForm onAdd={handleAddTask} username={username} editingTask={editingTask} />
+      <CreateTaskForm
+        onAdd={handleAddTask}
+        username={username}
+        editingTask={editingTask}
+      />
 
       <TaskFilter filters={filters} setFilters={setFilters} />
       <h2>Your Tasks</h2>
