@@ -10,9 +10,12 @@
     "createdBy": "manager1",
     "project": "AuthModule",
     "createdDate": "2025-04-09",
+    "startDate": "2025-04-10",
     "dueDate": "2025-04-12",
     "updatedDate": "2025-04-10",
-    "timeSpent": 5400
+    "timeSpent": 5400,
+    "estimatedHours": 6,
+    "tags": ["Auth", "OAuth", "Bug", "Urgent"]
   },
   {
     "id": 2,
@@ -25,9 +28,12 @@
     "createdBy": "manager2",
     "project": "MarketingSite",
     "createdDate": "2025-04-07",
+    "startDate": "2025-04-08",
     "dueDate": "2025-04-10",
     "updatedDate": "2025-04-10",
-    "timeSpent": 7200
+    "timeSpent": 7200,
+    "estimatedHours": 8,
+    "tags": ["UI", "Design", "Banner", "Marketing"]
   },
   {
     "id": 3,
@@ -40,9 +46,12 @@
     "createdBy": "manager1",
     "project": "AuthModule",
     "createdDate": "2025-04-11",
+    "startDate": "2025-04-12",
     "dueDate": "2025-04-15",
     "updatedDate": "2025-04-13",
-    "timeSpent": 3000
+    "timeSpent": 3000,
+    "estimatedHours": 12,
+    "tags": ["Auth", "Password", "Security", "Feature"]
   },
   {
     "id": 4,
@@ -55,9 +64,12 @@
     "createdBy": "admin",
     "project": "DevOps",
     "createdDate": "2025-04-08",
+    "startDate": "2025-04-08",
     "dueDate": "2025-04-10",
     "updatedDate": "2025-04-10",
-    "timeSpent": 3600
+    "timeSpent": 3600,
+    "estimatedHours": 4,
+    "tags": ["CI/CD", "GitHubActions", "DevOps", "Automation"]
   },
   {
     "id": 5,
@@ -70,9 +82,12 @@
     "createdBy": "manager2",
     "project": "Dashboard",
     "createdDate": "2025-04-10",
+    "startDate": "2025-04-11",
     "dueDate": "2025-04-14",
     "updatedDate": "2025-04-11",
-    "timeSpent": 1800
+    "timeSpent": 1800,
+    "estimatedHours": 10,
+    "tags": ["Dashboard", "Performance", "Memory", "Critical"]
   },
   {
     "id": 6,
@@ -85,9 +100,12 @@
     "createdBy": "manager1",
     "project": "TaskModule",
     "createdDate": "2025-04-11",
+    "startDate": "2025-04-12",
     "dueDate": "2025-04-16",
     "updatedDate": "2025-04-13",
-    "timeSpent": 4500
+    "timeSpent": 4500,
+    "estimatedHours": 9,
+    "tags": ["Workflow", "Approval", "Feature", "Manager"]
   },
   {
     "id": 7,
@@ -100,9 +118,12 @@
     "createdBy": "dev1",
     "project": "Analytics",
     "createdDate": "2025-04-12",
+    "startDate": "2025-04-13",
     "dueDate": "2025-04-18",
     "updatedDate": "2025-04-12",
-    "timeSpent": 0
+    "timeSpent": 0,
+    "estimatedHours": 5,
+    "tags": ["Analytics", "Graphs", "Tooltip", "Enhancement"]
   },
   {
     "id": 8,
@@ -115,9 +136,12 @@
     "createdBy": "manager1",
     "project": "AuthModule",
     "createdDate": "2025-04-09",
+    "startDate": "2025-04-09",
     "dueDate": "2025-04-10",
     "updatedDate": "2025-04-10",
-    "timeSpent": 3600
+    "timeSpent": 3600,
+    "estimatedHours": 3,
+    "tags": ["Logout", "Safari", "LocalStorage", "Bug"]
   },
   {
     "id": 9,
@@ -130,9 +154,12 @@
     "createdBy": "admin",
     "project": "Reports",
     "createdDate": "2025-04-08",
+    "startDate": "2025-04-09",
     "dueDate": "2025-04-13",
     "updatedDate": "2025-04-09",
-    "timeSpent": 2400
+    "timeSpent": 2400,
+    "estimatedHours": 4,
+    "tags": ["Reports", "Weekly", "Progress", "Blockers"]
   },
   {
     "id": 10,
@@ -145,8 +172,11 @@
     "createdBy": "dev1",
     "project": "UIEnhancement",
     "createdDate": "2025-04-05",
+    "startDate": "2025-04-06",
     "dueDate": "2025-04-08",
     "updatedDate": "2025-04-08",
-    "timeSpent": 3300
+    "timeSpent": 3300,
+    "estimatedHours": 3,
+    "tags": ["UI", "DarkMode", "Settings", "Frontend"]
   }
 ]
