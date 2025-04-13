@@ -75,4 +75,18 @@
     display: flex;
     gap: 10px;
   }
+  .logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 10px 0 20px 0;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
   
+  .logout-button:hover {
+    background-color: #cc0000;
+  }  
