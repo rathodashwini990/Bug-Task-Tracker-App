@@ -16,7 +16,12 @@ export default function CreateTaskForm({ onAdd, username, editingTask }) {
 
   useEffect(() => {
     if (editingTask) {
-      setForm({ ...editingTask, tags: editingTask.tags.join(", ") });
+        setForm({
+            ...editingTask,
+            tags: Array.isArray(editingTask.tags)
+              ? editingTask.tags.join(", ")
+              : "",
+          });
     }
   }, [editingTask]);
 
@@ -29,13 +34,22 @@ export default function CreateTaskForm({ onAdd, username, editingTask }) {
     const taskData = {
       ...form,
       id: editingTask?.id || Date.now(),
-      tags: form.tags.split(",").map(tag => tag.trim()),
+      tags: form.tags
+        ? form.tags.split(",").map((tag) => tag.trim())
+        : [],
     };
     onAdd(taskData);
     setForm({
-      title: "", description: "", priority: "Medium", status: "Open",
-      assignedTo: username, startDate: "", dueDate: "", tags: "",
-      estimatedHours: "", type: "Task"
+      title: "", 
+      description: "", 
+      priority: "Medium", 
+      status: "Open",
+      assignedTo: username, 
+      startDate: "", 
+      dueDate: "", 
+      tags: "",
+      estimatedHours: "", 
+      type: "Task"
     });
   };
 

@@ -10,7 +10,7 @@ export default function ManagerDashboard() {
   const [filters, setFilters] = useState({ priority: "", status: "" });
 
   useEffect(() => {
-    setTasks(tasksData); // All tasks
+    setTasks(tasksData);
   }, []);
 
   const handleStatusChange = (id, newStatus) => {
